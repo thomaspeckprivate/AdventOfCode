@@ -1,4 +1,5 @@
-﻿using AoC_2023_2.Data;
+﻿using AoC_2023_2;
+using AoC_2023_2.Data;
 
 String line;
 try
@@ -6,9 +7,9 @@ try
 	//Pass the file path and file name to the StreamReader constructor
 	StreamReader sr = new StreamReader("config.txt");
 
-	var bag = new Bag(sr.ToString());
+	var bag = new Bag(sr.ReadToEnd());
 
-	//Console.Write(fullValue);
+	Console.WriteLine(Helper.GetBagSumPower(bag));
 }
 catch (Exception e)
 {
