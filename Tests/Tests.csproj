@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AoC_2023_1\AoC_2023_1.csproj" />
+    <ProjectReference Include="..\AoC_2023_2\AoC_2023_2.csproj" />
   </ItemGroup>
 
 </Project>
