@@ -94,16 +94,30 @@ namespace Tests
 		}
 
 		[Theory]
-		[InlineData(10, "onezero")]
-		[InlineData(20, "twozero")]
-		[InlineData(30, "threezero")]
-		[InlineData(40, "fourzero")]
-		[InlineData(50, "fivezero")]
-		[InlineData(60, "sixzero")]
-		[InlineData(70, "sevenzero")]
-		[InlineData(80, "eightzero")]
-		[InlineData(90, "ninezero")]
-		public void Helper_Parses_Multiple_String_Digits(int expectedValue, string input)
+		[InlineData(11, "onezero")]
+		[InlineData(22, "twozero")]
+		[InlineData(33, "threezero")]
+		[InlineData(44, "fourzero")]
+		[InlineData(55, "fivezero")]
+		[InlineData(66, "sixzero")]
+		[InlineData(77, "sevenzero")]
+		[InlineData(88, "eightzero")]
+		[InlineData(99, "ninezero")]
+		public void Helper_Ignores_Zero(int expectedValue, string input)
+		{
+			var testValue = Helper.Read(input);
+			Assert.Equal(expectedValue, testValue);
+		}
+
+		[Theory]
+		[InlineData(18, "oneight")]
+		[InlineData(12, "one2ight")]
+		[InlineData(22, "o2ne")]
+		[InlineData(55, "fiven")]
+		[InlineData(11, "onee")]
+		[InlineData(33, "threeven")]
+		[InlineData(88, "threight")]
+		public void Helper_Edge_Cases_Considered(int expectedValue, string input)
 		{
 			var testValue = Helper.Read(input);
 			Assert.Equal(expectedValue, testValue);

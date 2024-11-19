@@ -20,7 +20,8 @@ try
 	while (line != null)
 	{
 		//Read the next line
-		fullValue += Helper.Read(line);
+		var calibration = Helper.Read(line);
+		fullValue += calibration;
 		line = sr.ReadLine();
 	}
 	//close the file
