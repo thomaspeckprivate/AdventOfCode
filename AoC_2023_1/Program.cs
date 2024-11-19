@@ -12,7 +12,7 @@ String line;
 try
 {
 	//Pass the file path and file name to the StreamReader constructor
-	StreamReader sr = new StreamReader("Config\\config.txt");
+	StreamReader sr = new StreamReader("config.txt");
 
 	//Continue to read until you reach end of file
 	var fullValue = 0;
