@@ -71,7 +71,39 @@ namespace Tests
 		[InlineData(42, "4nineeightseven2")]
 		[InlineData(14, "zoneight234")]
 		[InlineData(76, "7pqrstsixteen")]
+		public void Helper_Parses_Part_Two_Examples(int expectedValue, string input)
+		{
+			var testValue = Helper.Read(input);
+			Assert.Equal(expectedValue, testValue);
+		}
+
+		[Theory]
+		[InlineData(11, "one")]
+		[InlineData(22, "two")]
+		[InlineData(33, "three")]
+		[InlineData(44, "four")]
+		[InlineData(55, "five")]
+		[InlineData(66, "six")]
+		[InlineData(77, "seven")]
+		[InlineData(88, "eight")]
+		[InlineData(99, "nine")]
 		public void Helper_Parses_String_Digits(int expectedValue, string input)
+		{
+			var testValue = Helper.Read(input);
+			Assert.Equal(expectedValue, testValue);
+		}
+
+		[Theory]
+		[InlineData(10, "onezero")]
+		[InlineData(20, "twozero")]
+		[InlineData(30, "threezero")]
+		[InlineData(40, "fourzero")]
+		[InlineData(50, "fivezero")]
+		[InlineData(60, "sixzero")]
+		[InlineData(70, "sevenzero")]
+		[InlineData(80, "eightzero")]
+		[InlineData(90, "ninezero")]
+		public void Helper_Parses_Multiple_String_Digits(int expectedValue, string input)
 		{
 			var testValue = Helper.Read(input);
 			Assert.Equal(expectedValue, testValue);
