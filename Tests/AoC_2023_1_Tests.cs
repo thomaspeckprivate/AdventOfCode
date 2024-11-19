@@ -117,7 +117,7 @@ namespace Tests
 		[InlineData(11, "onee")]
 		[InlineData(33, "threeven")]
 		[InlineData(88, "threight")]
-		public void Helper_Edge_Cases_Considered(int expectedValue, string input)
+		public void Helper_Catches_Overlapping_String_Digits(int expectedValue, string input)
 		{
 			var testValue = Helper.Read(input);
 			Assert.Equal(expectedValue, testValue);
