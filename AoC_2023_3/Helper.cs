@@ -2,25 +2,14 @@
 {
 	public static class Helper
 	{
-		public static int SumPartNumber(List<int> adjacentPos, string line)
+		public static int SumPartNumber(List<Line> lines)
 		{
-			var newAdjacentPos = new List<int>();
-			var objects = line.Split(".");
-			char previousCharacter = '.';
-			int index = 0;
-			for (int i = 0; i < objects.Length; i++)
-			{
-				var minIndex = index;
-				var maxIndex = Math.Max(objects[i].Length - 1, index);
-				if (int.TryParse(objects[i], out var number))
-				{
+			return lines.Sum(x => x.CurrentValues);
+		}
 
-				}
-
-				index++;
-			}
-
-			return 0;
+		public static long SumGearRatios(List<Line> lines)
+		{
+			return lines.Sum(x => x.GearRatio);
 		}
 	}
 }

@@ -7,14 +7,17 @@ try
 	StreamReader sr = new StreamReader("config.txt");
 
 	line = sr.ReadLine() ?? string.Empty;
-	var symbolIndexes = new List<int>();
-	var sum = 0;
-	while (string.IsNullOrEmpty(line))
+	var lines = new List<Line>();
+	Line lineObject = null;
+	while (!string.IsNullOrEmpty(line))
 	{
 		//Read the next line
-		sum += Helper.SumPartNumber(symbolIndexes, line);
+		var newLine = new Line(lineObject, line);
+		lines.Add(newLine);
+		lineObject = newLine;
 		line = sr.ReadLine() ?? string.Empty;
 	}
+	Console.WriteLine(Helper.SumGearRatios(lines));
 	//close the file
 	sr.Close();
 	Console.ReadLine();
