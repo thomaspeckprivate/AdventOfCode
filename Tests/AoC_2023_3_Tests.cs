@@ -1,5 +1,4 @@
 using AoC_2023_3;
-using Microsoft.VisualStudio.TestPlatform.CoreUtilities.Extensions;
 
 namespace Tests
 {
