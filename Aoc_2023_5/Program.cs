@@ -5,7 +5,7 @@ try
 {
 	//Pass the file path and file name to the StreamReader constructor
 	long[] seeds = new StreamReader("Config\\seeds.txt").ReadToEnd().Split(' ').Select(x => long.Parse(x)).ToArray();
-	for(int i = 0; i < seeds.Length; i )
+	for(int i = 0; i < seeds.Length; i++)
 	{
 
 	}
