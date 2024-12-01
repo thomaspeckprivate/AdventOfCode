@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="config.txt" />
+    <None Remove="Config\fertilizer-to-water.txt" />
+    <None Remove="Config\humidity-to-location.txt" />
+    <None Remove="Config\light-to-temperature.txt" />
+    <None Remove="Config\seed-to-soil.txt" />
+    <None Remove="Config\seeds.txt" />
+    <None Remove="Config\soil-to-fertilizer.txt" />
+    <None Remove="Config\temperature-to-humidity.txt" />
+    <None Remove="Config\water-to-light.txt" />
+    <None Remove="README.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Config\humidity-to-location.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\temperature-to-humidity.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\light-to-temperature.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\water-to-light.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\fertilizer-to-water.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\soil-to-fertilizer.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\seed-to-soil.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\seeds.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\config.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="README.txt" />
+  </ItemGroup>
+
+</Project>
