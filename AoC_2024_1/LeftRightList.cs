@@ -35,5 +35,21 @@
 			}
 			return difference;
 		}
+
+		public long GetSimilarityScore()
+		{
+			var dict = new Dictionary<long, long>();
+			var similarityScore = 0L;
+			for (int i = 0; i < Left.Length; i++)
+			{
+				if (!dict.TryGetValue(Left[i], out var similarity))
+				{
+					similarity = Left[i] * Right.Count(x => x == Left[i]);
+					dict.Add(Left[i], similarity);
+				}
+				similarityScore += similarity;
+			}
+			return similarityScore;
+		}
 	}
 }

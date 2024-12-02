@@ -6,7 +6,7 @@ try
 	//Pass the file path and file name to the StreamReader constructor
 	var list = new LeftRightList(new StreamReader("config.txt").ReadToEnd());
 
-	Console.WriteLine(list.GetDifference());
+	Console.WriteLine(list.GetSimilarityScore());
 }
 catch (Exception e)
 {
