@@ -28,6 +28,7 @@
     <ProjectReference Include="..\AoC_2023_4\AoC_2023_4.csproj" />
     <ProjectReference Include="..\AoC_2023_5\AoC_2023_5.csproj" />
     <ProjectReference Include="..\AoC_2024_1\AoC_2024_1.csproj" />
+    <ProjectReference Include="..\AoC_2024_2\AoC_2024_2.csproj" />
   </ItemGroup>
 
 </Project>
