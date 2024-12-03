@@ -8,6 +8,7 @@ namespace Tests
 		public void Reactor_GetNumSafeReports_gets_correct_number_of_reports()
 		{
 			var data = @"10 6 4 2 1
+7 6 4 2 1
 1 2 7 8 9
 9 7 6 2 1
 1 3 2 4 5
