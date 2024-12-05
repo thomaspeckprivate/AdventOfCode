@@ -31,6 +31,7 @@
     <ProjectReference Include="..\AoC_2024_2\AoC_2024_2.csproj" />
     <ProjectReference Include="..\AoC_2024_3\AoC_2024_3.csproj" />
     <ProjectReference Include="..\AoC_2024_4\AoC_2024_4.csproj" />
+    <ProjectReference Include="..\AoC_2024_5\AoC_2024_5.csproj" />
   </ItemGroup>
 
 </Project>
