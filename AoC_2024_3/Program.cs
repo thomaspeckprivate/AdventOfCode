@@ -6,7 +6,7 @@ try
 	//Pass the file path and file name to the StreamReader constructor
 	var list = new MulInstructions(new StreamReader("config.txt").ReadToEnd());
 
-	Console.WriteLine(list.SumResults());
+	Console.WriteLine(list.SumComplexResults());
 }
 catch (Exception e)
 {

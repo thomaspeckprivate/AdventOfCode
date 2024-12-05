@@ -3,22 +3,36 @@
 	public class MulInstructions
 	{
 		List<long?> Multiplications = new List<long?>();
+		List<long?> ComplexMultiplications = new List<long?>();
 
 		public MulInstructions(string data)
 		{
+			bool writeToComplex = true;
 			var mulData = data.Split("mul(");
 			foreach (var mul in mulData)
 			{
 				if (TryGetValidInput(mul, out var multiplicationValue))
 				{
 					Multiplications.Add(multiplicationValue);
+
+					if (writeToComplex)
+					{
+						ComplexMultiplications.Add(multiplicationValue);
+					}
 				}
+				
+				writeToComplex = CheckDoDont(writeToComplex, mul);
 			}
 		}
 
 		public long SumResults()
 		{
 			return Multiplications.Sum(x => x ?? 0);
+		}
+
+		public long SumComplexResults()
+		{
+			return ComplexMultiplications.Sum(x => x ?? 0);
 		}
 
 		private bool TryGetValidInput(string currentSequence, out long? multiplicationValue)
@@ -82,6 +96,29 @@
 			}
 
 			return false;
+		}
+
+		private bool CheckDoDont(bool currentCheck, string data)
+		{
+			List<string> brokenData = data.Split("don't()").ToList();
+			if (brokenData.Count > 1)
+			{
+				brokenData = brokenData.Last().Split("do()").ToList();
+				if (brokenData.Count > 1)
+				{
+					return true;
+				}
+				return false;
+			}
+			else
+			{
+				brokenData = data.Split("do()").ToList();
+				if (brokenData.Count > 1)
+				{
+					return true;
+				}
+			}
+			return currentCheck;
 		}
 	}
 }
