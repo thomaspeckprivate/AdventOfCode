@@ -6,7 +6,7 @@ try
 	//Pass the file path and file name to the StreamReader constructor
 	var list = new WordSearch(new StreamReader("config.txt").ReadToEnd());
 
-	Console.WriteLine(list.CountXmasAmount());
+	Console.WriteLine(list.CountMasPositions());
 }
 catch (Exception e)
 {
