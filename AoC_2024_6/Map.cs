@@ -51,9 +51,57 @@
 
 		public long GetNumberOfValidObjectPositions()
 		{
-			var returnVal = 0;
+			char[][] newMap = new char[MappedArea.Length][];
+			var mappedRowLength = MappedArea.First().Length;
+			for (int i = 0; i < MappedArea.Length; i++)
+			{
+				newMap[i] = new char[mappedRowLength];
+				Array.Copy(MappedArea[i], newMap[i], mappedRowLength);
+			}
+			GetGuardVisitedPositions(out var visitedPositions, newMap);
 
-			return returnVal;
+			var validObjects = 0;
+			bool hadFirstTurn = false;
+			visitedPositions.RemoveAt(visitedPositions.Count - 1);
+			List<AbsolutePosition> invalidPositions = new List<AbsolutePosition>();
+			List<AbsolutePosition> foundPositions = new List<AbsolutePosition>();
+			for (int i = 0; i < visitedPositions.Count; i++)
+			{
+				var position = visitedPositions[i];
+				if (!hadFirstTurn && position.direction == visitedPositions.First().direction)
+				{
+					invalidPositions.Add(new AbsolutePosition(position.x, position.y));
+					continue;
+				}
+				hadFirstTurn = true;
+				if (invalidPositions.Contains(new AbsolutePosition(position.x, position.y)))
+				{
+					continue;
+				}
+
+				for (int j = 0; j < MappedArea.Length; j++)
+				{
+					Array.Copy(MappedArea[j], newMap[j], mappedRowLength);
+				}
+
+				newMap[position.y][position.x] = 'O';
+
+				Guard.ResetGuard();
+				var absPos = new AbsolutePosition(position.x, position.y);
+				if (!foundPositions.Contains(absPos) && GetGuardVisitedPositions(out var _, newMap) == 0)
+				{
+					//foreach (var array in newMap)
+					//{
+					//	Console.WriteLine(array);
+					//}
+					//Console.WriteLine();
+					foundPositions.Add(absPos);
+					validObjects++;
+					Console.WriteLine(i);
+				}
+			}
+
+			return validObjects;
 		}
 
 		private void IncrementTime(char[][] mappedArea, out Position nextPosition)

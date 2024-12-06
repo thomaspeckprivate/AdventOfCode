@@ -6,7 +6,7 @@ String line;
 	//Pass the file path and file name to the StreamReader constructor
 	var list = new Map(new StreamReader("config.txt").ReadToEnd());
 
-	Console.WriteLine(list.GetGuardVisitedPositions(out var _));
+	Console.WriteLine(list.GetNumberOfValidObjectPositions());
 //}
 //catch (Exception e)
 //{
