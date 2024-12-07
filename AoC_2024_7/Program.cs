@@ -1,10 +1,11 @@
-﻿using AoC_2024_6;
+﻿using AoC_2024_7;
+
 try
 {
 	//Pass the file path and file name to the StreamReader constructor
-	var list = new Map(new StreamReader("config.txt").ReadToEnd());
+	var list = new RopeBridge(new StreamReader("config.txt").ReadToEnd());
 
-	Console.WriteLine(list.GetNumberOfValidObjectPositions());
+	Console.WriteLine(list.GetTotalCalibrationResult());
 }
 catch (Exception e)
 {
