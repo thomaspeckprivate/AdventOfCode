@@ -59,45 +59,42 @@
 				Array.Copy(MappedArea[i], newMap[i], mappedRowLength);
 			}
 			GetGuardVisitedPositions(out var visitedPositions, newMap);
+			visitedPositions.RemoveAt(visitedPositions.Count - 1);
+			AbsolutePosition invalidPosition = new AbsolutePosition(visitedPositions.First().x, visitedPositions.First().y);
+			var positionsToVisit = new HashSet<AbsolutePosition>();
+			foreach (var position in visitedPositions)
+			{
+				var absPos = new AbsolutePosition(position.x, position.y);
+
+				if (invalidPosition != absPos)
+				{
+					positionsToVisit.Add(absPos);
+				}
+			}
+			Console.WriteLine(positionsToVisit.RemoveWhere(x => x.y < 0 || x.x < 0 || x.y >= MappedArea.Length || x.x >= MappedArea.First().Length));
 
 			var validObjects = 0;
-			bool hadFirstTurn = false;
-			visitedPositions.RemoveAt(visitedPositions.Count - 1);
-			List<AbsolutePosition> invalidPositions = new List<AbsolutePosition>();
-			List<AbsolutePosition> foundPositions = new List<AbsolutePosition>();
-			for (int i = 0; i < visitedPositions.Count; i++)
-			{
-				var position = visitedPositions[i];
-				if (!hadFirstTurn && position.direction == visitedPositions.First().direction)
-				{
-					invalidPositions.Add(new AbsolutePosition(position.x, position.y));
-					continue;
-				}
-				hadFirstTurn = true;
-				if (invalidPositions.Contains(new AbsolutePosition(position.x, position.y)))
-				{
-					continue;
-				}
 
-				for (int j = 0; j < MappedArea.Length; j++)
+			foreach (var position in positionsToVisit)
+			{
+
+				for (int k = 0; k < MappedArea.Length; k++)
 				{
-					Array.Copy(MappedArea[j], newMap[j], mappedRowLength);
+					Array.Copy(MappedArea[k], newMap[k], mappedRowLength);
 				}
 
 				newMap[position.y][position.x] = 'O';
 
 				Guard.ResetGuard();
-				var absPos = new AbsolutePosition(position.x, position.y);
-				if (!foundPositions.Contains(absPos) && GetGuardVisitedPositions(out var _, newMap) == 0)
+				if (GetGuardVisitedPositions(out var _, newMap) == 0)
 				{
 					//foreach (var array in newMap)
 					//{
 					//	Console.WriteLine(array);
 					//}
 					//Console.WriteLine();
-					foundPositions.Add(absPos);
 					validObjects++;
-					Console.WriteLine(i);
+					Console.WriteLine($"Row: {position.y}, Column {position.x}");
 				}
 			}
 
